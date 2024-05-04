@@ -1,0 +1,99 @@
+.spinner {
+  --frame: 1s;
+}
+.spinner,
+.spinner::before,
+.spinner::after {
+  border: 5px solid white;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+}
+.spinner {
+  margin: auto;
+  font-size: 4em;
+  position: absolute;
+  top: 4px;
+  left: 140px;
+
+  width: 0.5em;
+  height: 0.5em;
+  -webkit-animation: anim-spinner var(--frame) ease infinite;
+  animation: anim-spinner var(--frame) ease infinite;
+}
+.spinner::before,
+.spinner::after {
+  content: '';
+  position: absolute;
+}
+.spinner::before {
+  inset: 1px;
+  -webkit-animation: anim-spinner calc(var(--frame) * 4.3) ease-in infinite;
+  animation: anim-spinner calc(var(--frame) * 4.3) ease-in infinite;
+}
+.spinner::after {
+  inset: 7px;
+  -webkit-animation: anim-spinner calc(var(--frame) * 1.51) ease-out infinite;
+  animation: anim-spinner calc(var(--frame) * 1.51) ease-out infinite;
+}
+
+@-webkit-keyframes anim-spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+@keyframes anim-spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 45px 350px 50px;
+  width: 550px;
+  height: 400px;
+  margin: auto;
+  border: 3px solid blue;
+  border-radius: 3px;
+}
+
+header {
+  grid-column: span 12;
+}
+
+aside {
+  grid-column: span 6;
+}
+main {
+  grid-column: span 6;
+}
+
+button {
+  font-size: x-large;
+  font-weight: 800;
+  font-family: monospace;
+  background-color: yellow;
+  color: black;
+  width: 100%;
+  padding: 10px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+#pokemon-details {
+  color: black;
+  font-weight: 400;
+  font-size: medium;
+  font-family: monospace;
+}
