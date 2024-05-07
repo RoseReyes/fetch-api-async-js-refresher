@@ -13,46 +13,21 @@ const fetchPokemon = () => {
 };
 
 const displayPokemon = (pokemon) => {
-  console.log(pokemon);
-
   // clear items
   pokemonImageContainer.innerHTML = '';
   pokemonDetailsContainer.innerHTML = '';
 
-  const imageElement = document.createElement('img');
-  imageElement.src = pokemon.sprites.front_default;
-  pokemonImageContainer.appendChild(imageElement);
-
-  const name = document.createElement('p');
-  name.textContent = 'Name: ' + pokemon.name;
-
-  const weight = document.createElement('p');
-  weight.textContent = 'Weight: ' + pokemon.weight;
-
-  const height = document.createElement('p');
-  height.textContent = 'Height: ' + pokemon.height;
-
-  const species = document.createElement('p');
-  species.textContent = 'Species Name: ' + pokemon.species.name;
-
-  const order = document.createElement('p');
-  order.textContent = 'Order: ' + pokemon.order;
-
-  const id = document.createElement('p');
-  id.textContent = 'Id: ' + pokemon.id;
-
-  const baseExperience = document.createElement('p');
-  baseExperience.textContent = 'Base_experience: ' + pokemon.base_experience;
-
-  pokemonDetailsContainer.append(
-    name,
-    weight,
-    height,
-    species,
-    order,
-    id,
-    baseExperience
-  );
+  if (pokemon) {
+    pokemonImageContainer.innerHTML = `<img src=${pokemon.sprites.front_default} title=${pokemon.name} />`;
+    pokemonDetailsContainer.innerHTML = `
+    <p><span class="labels">Name:</span>${pokemon.name}</p>
+    <p><span class="labels">Weight:</span>${pokemon.weight}</p>
+    <p><span class="labels">Height:</span>${pokemon.height}</p>
+    <p><span class="labels">Species:</span>${pokemon.species.name}</p>
+    <p><span class="labels">Order:</span>${pokemon.order}</p>
+    <p><span class="labels">Id:</span>${pokemon.id}</p>
+    <p><span class="labels">Base Experience:</span>${pokemon.base_experience}</p>`;
+  }
 };
 
 button.addEventListener('click', fetchPokemon);

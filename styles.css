@@ -97,3 +97,8 @@ img {
   font-size: medium;
   font-family: monospace;
 }
+
+.labels {
+  font-weight: bolder;
+  font-size: larger;
+}
