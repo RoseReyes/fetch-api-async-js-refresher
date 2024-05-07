@@ -14,6 +14,9 @@ const fetchPokemon = () => {
     })
     .then((data) => {
       displayPokemon(data);
+    })
+    .catch((error) => {
+      console.log(error);
     });
 };
 
