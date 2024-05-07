@@ -6,7 +6,12 @@ const fetchPokemon = () => {
   fetch(
     `https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 99) + 1}`
   )
-    .then((res) => res.json())
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error('The request failed');
+      }
+      return res.json();
+    })
     .then((data) => {
       displayPokemon(data);
     });
